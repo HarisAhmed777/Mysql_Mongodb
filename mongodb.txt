@@ -1,0 +1,467 @@
+mongodb
+
+1. Write a MongoDB query to display at least 10 details of the documents of book id. Btitle, authors in array and price for all the documents in the collection Bookstore.
+
+
+Milestone> db.createCollection("Bookstore2")
+{ ok: 1 }
+Milestone> db.Bookstore2.insert({"book_id":1,Btitle:"Hello programmers",authors:["Haris","Viswa"],price:200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc83d52598a6c5d9bbd59') }
+}
+Milestone> db.Bookstore2.insert({"book_id":2,Btitle:"Hello Developers",authors:["Haris","Abishek"],price:500})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc84b52598a6c5d9bbd5a') }
+}
+Milestone> db.Bookstore2.insert({"book_id":3,Btitle:"DSA",authors:["Viswa","Mohan"],price:1500})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc85552598a6c5d9bbd5b') }
+}
+Milestone> db.Bookstore2.insert({"book_id":4,Btitle:"Software Engineer",authors:["Giftson","Mohan"],price:800})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc85e52598a6c5d9bbd5c') }
+}
+Milestone> db.Bookstore2.insert({"book_id":5,Btitle:"Desingners",authors:["Giftson","Saravanan"],price:300})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc86952598a6c5d9bbd5d') }
+}
+Milestone> db.Bookstore2.insert({"book_id":6,Btitle:"Full Stack",authors:["Abishek","Abinesh"],price:700})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc87352598a6c5d9bbd5e') }
+}
+Milestone> db.Bookstore2.insert({"book_id":7,Btitle:"Front end developer",authors:["Abishek","Viswa"],price:1700})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc88352598a6c5d9bbd5f') }
+}
+Milestone> db.Bookstore2.insert({"book_id":8,Btitle:"Back end developer",authors:["Saravanan","Abinesh"],price:1900})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc89b52598a6c5d9bbd60') }
+}
+Milestone> db.Bookstore2.insert({"book_id":9,Btitle:"Python  developer",authors:["Haris","Preethi"],price:200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc8ac52598a6c5d9bbd61') }
+}
+Milestone> db.Bookstore2.insert({"book_id":10,Btitle:"Java developer",authors:["Haris","Preethi"],price:1200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fc8c452598a6c5d9bbd62') }
+}
+Milestone> db.Bookstore2.find()
+[
+  {
+    _id: ObjectId('657fc83d52598a6c5d9bbd59'),
+    book_id: 1,
+    Btitle: 'Hello programmers',
+    authors: [ 'Haris', 'Viswa' ],
+    price: 200
+  },
+  {
+    _id: ObjectId('657fc84b52598a6c5d9bbd5a'),
+    book_id: 2,
+    Btitle: 'Hello Developers',
+    authors: [ 'Haris', 'Abishek' ],
+    price: 500
+  },
+  {
+    _id: ObjectId('657fc85552598a6c5d9bbd5b'),
+    book_id: 3,
+    Btitle: 'DSA',
+    authors: [ 'Viswa', 'Mohan' ],
+    price: 1500
+  },
+  {
+    _id: ObjectId('657fc85e52598a6c5d9bbd5c'),
+    book_id: 4,
+    Btitle: 'Software Engineer',
+    authors: [ 'Giftson', 'Mohan' ],
+    price: 800
+  },
+  {
+    _id: ObjectId('657fc86952598a6c5d9bbd5d'),
+    book_id: 5,
+    Btitle: 'Desingners',
+    authors: [ 'Giftson', 'Saravanan' ],
+    price: 300
+  },
+  {
+    _id: ObjectId('657fc87352598a6c5d9bbd5e'),
+    book_id: 6,
+    Btitle: 'Full Stack',
+    authors: [ 'Abishek', 'Abinesh' ],
+    price: 700
+  },
+  {
+    _id: ObjectId('657fc88352598a6c5d9bbd5f'),
+    book_id: 7,
+    Btitle: 'Front end developer',
+    authors: [ 'Abishek', 'Viswa' ],
+    price: 1700
+  },
+  {
+    _id: ObjectId('657fc89b52598a6c5d9bbd60'),
+    book_id: 8,
+    Btitle: 'Back end developer',
+    authors: [ 'Saravanan', 'Abinesh' ],
+    price: 1900
+  },
+  {
+    _id: ObjectId('657fc8ac52598a6c5d9bbd61'),
+    book_id: 9,
+    Btitle: 'Python  developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 200
+  },
+  {
+    _id: ObjectId('657fc8c452598a6c5d9bbd62'),
+    book_id: 10,
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 1200
+  }
+
+
+2. Write a MongoDB query to display the fields Btitle, authors and price but exclude the bookid for all the documents in the collection Bookstore.
+
+Milestone> db.Bookstore2.find({},{Btitle:1,authors:1,_id:0,price:1})
+[
+  {
+    Btitle: 'Hello programmers',
+    authors: [ 'Haris', 'Viswa' ],
+    price: 200
+  },
+  {
+    Btitle: 'Hello Developers',
+    authors: [ 'Haris', 'Abishek' ],
+    price: 500
+  },
+  { Btitle: 'DSA', authors: [ 'Viswa', 'Mohan' ], price: 1500 },
+  {
+    Btitle: 'Software Engineer',
+    authors: [ 'Giftson', 'Mohan' ],
+    price: 800
+  },
+  {
+    Btitle: 'Desingners',
+    authors: [ 'Giftson', 'Saravanan' ],
+    price: 300
+  },
+  {
+    Btitle: 'Full Stack',
+    authors: [ 'Abishek', 'Abinesh' ],
+    price: 700
+  },
+  {
+    Btitle: 'Front end developer',
+    authors: [ 'Abishek', 'Viswa' ],
+    price: 1700
+  },
+  {
+    Btitle: 'Back end developer',
+    authors: [ 'Saravanan', 'Abinesh' ],
+    price: 1900
+  },
+  {
+    Btitle: 'Python  developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 200
+  },
+  {
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 1200
+  }
+]
+
+
+3. Write a MongoDB query to display the first 3 books based on similar authors.
+Milestone> db.Bookstore2.find({authors:["Haris","Preethi"]})
+[
+  {
+    _id: ObjectId('657fc8ac52598a6c5d9bbd61'),
+    book_id: 9,
+    Btitle: 'Python  developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 500
+  },
+  {
+    _id: ObjectId('657fc8c452598a6c5d9bbd62'),
+    book_id: 10,
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 500
+  }
+]
+
+
+
+4. Write a MongoDB query to find the book price more than 1500.
+
+Milestone> db.Bookstore2.find({price:{$gt:1500}})
+[
+  {
+    _id: ObjectId('657fc88352598a6c5d9bbd5f'),
+    book_id: 7,
+    Btitle: 'Front end developer',
+    authors: [ 'Abishek', 'Viswa' ],
+    price: 1700
+  },
+  {
+    _id: ObjectId('657fc89b52598a6c5d9bbd60'),
+    book_id: 8,
+    Btitle: 'Back end developer',
+    authors: [ 'Saravanan', 'Abinesh' ],
+    price: 1900
+  }
+]
+
+5. Write a MongoDB query to find the book title who's price is more than 800 but less Chan 2000.
+
+Milestone> db.Bookstore2.find({
+... $and:[
+... {price:{$gt:800}},
+... {price:{$lt:2000}}]})
+[
+  {
+    _id: ObjectId('657fc85552598a6c5d9bbd5b'),
+    book_id: 3,
+    Btitle: 'DSA',
+    authors: [ 'Viswa', 'Mohan' ],
+    price: 1500
+  },
+  {
+    _id: ObjectId('657fc88352598a6c5d9bbd5f'),
+    book_id: 7,
+    Btitle: 'Front end developer',
+    authors: [ 'Abishek', 'Viswa' ],
+    price: 1700
+  },
+  {
+    _id: ObjectId('657fc89b52598a6c5d9bbd60'),
+    book_id: 8,
+    Btitle: 'Back end developer',
+    authors: [ 'Saravanan', 'Abinesh' ],
+    price: 1900
+  },
+  {
+    _id: ObjectId('657fc8c452598a6c5d9bbd62'),
+    book_id: 10,
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 1200
+  }
+]
+6. Write a MongoDB query to arrange the book name of the bookstore in ascending order along with all the columns.
+
+Milestone> db.Bookstore.find({},{Btitle:1,_id:0}).sort({"Btitle":1})
+[
+  { Btitle: 'Back end developer' },
+  { Btitle: 'DSA' },
+  { Btitle: 'Desingners' },
+  { Btitle: 'Front end developer' },
+  { Btitle: 'Full Stack' },
+  { Btitle: 'Hello Developers' },
+  { Btitle: 'Hello programmers' },
+  { Btitle: 'Java developer' },
+  { Btitle: 'Python  developer' },
+  { Btitle: 'Software Engineer' }
+]
+
+7.Write a MongoDB query to arrange the book name of the bookstore in scending order alone with all the columns.
+
+
+
+
+Milestone> db.Bookstore.find({},{Btitle:1,_id:0}).sort({"Btitle":1})
+[
+  { Btitle: 'Back end developer' },
+  { Btitle: 'DSA' },
+  { Btitle: 'Desingners' },
+  { Btitle: 'Front end developer' },
+  { Btitle: 'Full Stack' },
+  { Btitle: 'Hello Developers' },
+  { Btitle: 'Hello programmers' },
+  { Btitle: 'Java developer' },
+  { Btitle: 'Python  developer' },
+  { Btitle: 'Software Engineer' }
+]
+Milestone> db.Bookstore.find({}).sort({"Btitle":1})
+[
+  {
+    _id: ObjectId('657fc6fd52598a6c5d9bbd54'),
+    book_id: 7,
+    Btitle: 'Back end developer',
+    authors: [ 'Saravanan', 'Abinesh' ],
+    price: 1900,
+    bood_id: 8
+  },
+  {
+    _id: ObjectId('657fc68152598a6c5d9bbd4f'),
+    book_id: 3,
+    Btitle: 'DSA',
+    authors: [ 'Viswa', 'Mohan' ],
+    price: 1500
+  },
+  {
+    _id: ObjectId('657fc6b452598a6c5d9bbd51'),
+    book_id: 5,
+    Btitle: 'Desingners',
+    authors: [ 'Giftson', 'Saravanan' ],
+    price: 300
+  },
+  {
+    _id: ObjectId('657fc6e552598a6c5d9bbd53'),
+    book_id: 7,
+    Btitle: 'Front end developer',
+    authors: [ 'Abishek', 'Viswa' ],
+    price: 1700
+  },
+  {
+    _id: ObjectId('657fc6ce52598a6c5d9bbd52'),
+    book_id: 6,
+    Btitle: 'Full Stack',
+    authors: [ 'Abishek', 'Abinesh' ],
+    price: 700
+  },
+  {
+    _id: ObjectId('657fc66952598a6c5d9bbd4e'),
+    book_id: 2,
+    Btitle: 'Hello Developers',
+    authors: [ 'Haris', 'Abishek' ],
+    price: 500
+  },
+  {
+    _id: ObjectId('657fc65352598a6c5d9bbd4d'),
+    book_id: 1,
+    Btitle: 'Hello programmers',
+    authors: [ 'Haris', 'Viswa' ],
+    price: 200
+  },
+  {
+    _id: ObjectId('657fc71e52598a6c5d9bbd56'),
+    book_id: 7,
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 1200,
+    bood_id: 10
+  },
+  {
+    _id: ObjectId('657fc71252598a6c5d9bbd55'),
+    book_id: 7,
+    Btitle: 'Python  developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 200
+  },
+  {
+    _id: ObjectId('657fc69b52598a6c5d9bbd50'),
+    book_id: 4,
+    Btitle: 'Software Engineer',
+    authors: [ 'Giftson', 'Mohan' ],
+    price: 800
+  }
+]
+
+
+
+
+8. Write a MongoDB query to know whether the author in the authors list.
+
+Milestone> db.Bookstore2.find({authors:["Haris","Preethi"]})
+[
+  {
+    _id: ObjectId('657fc8ac52598a6c5d9bbd61'),
+    book_id: 9,
+    Btitle: 'Python  developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 200
+  },
+  {
+    _id: ObjectId('657fc8c452598a6c5d9bbd62'),
+    book_id: 10,
+    Btitle: 'Java developer',
+    authors: [ 'Haris', 'Preethi' ],
+    price: 1200
+  }
+]
+
+
+9.Write a MongoDB query to update & increase the book price Rs.500 in all book name as "MongoDB Practice".
+
+Milestone> db.Bookstore2.updateMany({},{ $inc:{price:500}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 10,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({},{ $set:{Btitle:"MongoDB Practice"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+10. Write a MongoDB query to use Update modifiers (Sset, Spush, Spull, SsetOnInsert,Supsert) in bookstore.
+
+
+Milestone> db.Bookstore2.update({},{ $set:{Btitle:"MongoDB Practice"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({authors:"Haris"},{ $push:{authors:"MongoDB Practice"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({book_id:2},{ $push:{authors:"MongoDB Practice"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({book_id:3},{ $push:{authors:"Viswa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({book_id:3},{ $pull:{authors:"Viswa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Milestone> db.Bookstore2.update({book_id:11},{ $set:{btitle:"Newbook"}},{upsert:true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('657fdc04ddc46f6bb9370c74'),
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}
+Milestone>
+

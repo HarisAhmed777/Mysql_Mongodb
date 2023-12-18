@@ -1,0 +1,125 @@
+Milestone task Sql
+
+1)Create a table with suitable constraints and fill the table with following database
+
+mysql> create table teachers(teach_id int ,name varchar(40),dept varchar(40),dob date,salary int ,gender varchar(1) );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into teachers values(1,"Haris","Computer Applications","2000-07-21",25000,"M");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into teachers values(2,"Viswa","Engineering","2000-09-19",30000,"M"),(3,"Preethi","History","2000-09-18",30000,"F");
+Query OK, 2 rows affected (0.07 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into teachers values(4,"Ramanjeeet","English","2000-03-16",9500,"F"),(5,"Lisma","Hindi","2001-01-09",8000,"F");
+Query OK, 2 rows affected (0.07 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into teachers values(6,"Ulsah","Malayalam","1999-08-29",19500,"M"),(7,"Harigovind","Maths","2000-09-02",18000,"M");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into teachers values(8,"Kanmani","Science","2000-11-05",4500,"F"),(9,"Subisha","Maths","2000-07-20",20000,"F");
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Q2. Write an SQL. Query to select all the information of teachers in computer department.
+mysql> select * from teachers where gender = "F";
++----------+------------+---------+------------+--------+--------+
+| teach_id | name       | dept    | dob        | salary | gender |
++----------+------------+---------+------------+--------+--------+
+|        3 | Preethi    | History | 2000-09-18 |  30000 | F      |
+|        4 | Ramanjeeet | English | 2000-03-16 |   9500 | F      |
+|        5 | Lisma      | Hindi   | 2001-01-09 |   8000 | F      |
+|        8 | Kanmani    | Science | 2000-11-05 |   4500 | F      |
+|        9 | Subisha    | Maths   | 2000-07-20 |  20000 | F      |
++----------+------------+---------+------------+--------+--------+
+5 rows in set (0.01 sec)
+
+03. Write a query is list the name of female teachers in History department.
+mysql> select * from teachers where gender = "F";
+mysql> select * from teachers where dept="History";
++----------+---------+---------+------------+--------+--------+
+| teach_id | name    | dept    | dob        | salary | gender |
++----------+---------+---------+------------+--------+--------+
+|        3 | Preethi | History | 2000-09-18 |  30000 | F      |
++----------+---------+---------+------------+--------+--------+
+1 row in set (0.00 sec)
+04. list all names of teachers with date of admission in ascending order
+mysql> select * from teachers order by dob;
++----------+------------+-----------------------+------------+--------+--------+
+| teach_id | name       | dept                  | dob        | salary | gender |
++----------+------------+-----------------------+------------+--------+--------+
+|        6 | Ulsah      | Malayalam             | 1999-08-29 |  19500 | M      |
+|        4 | Ramanjeeet | English               | 2000-03-16 |   9500 | F      |
+|        9 | Subisha    | Maths                 | 2000-07-20 |  20000 | F      |
+|        1 | Haris      | Computer Applications | 2000-07-21 |  25000 | M      |
+|        7 | Harigovind | Maths                 | 2000-09-02 |  18000 | M      |
+|        3 | Preethi    | History               | 2000-09-18 |  30000 | F      |
+|        2 | Viswa      | Engineering           | 2000-09-19 |  30000 | M      |
+|        8 | Kanmani    | Science               | 2000-11-05 |   4500 | F      |
+|        5 | Lisma      | Hindi                 | 2001-01-09 |   8000 | F      |
++----------+------------+-----------------------+------------+--------+--------+
+9 rows in set (0.00 sec)
+
+
+05. display Teacher's name, Department, and Salary of male teacher.
+mysql> select name ,dept,salary from teachers where gender = 'm';
++------------+-----------------------+--------+
+| name       | dept                  | salary |
++------------+-----------------------+--------+
+| Haris      | Computer Applications |  25000 |
+| Viswa      | Engineering           |  30000 |
+| Ulsah      | Malayalam             |  19500 |
+| Harigovind | Maths                 |  18000 |
++------------+-----------------------+--------+
+4 rows in set (0.00 sec)
+
+
+Q. I count the number of items whose salary is less than 10,000
+mysql> select count(salary) from teachers where salary<10000;
++---------------+
+| count(salary) |
++---------------+
+|             3 |
++---------------+
+1 row in set (0.00 sec)
+
+07. To insert a new record in the Teacher table with the following data: 8, "Mersha", computer" (1/1/2000),12000,"m"
+
+mysql> insert into teachers values (10,"Mersha","computer","2000-1-1",12000,"M");
+Query OK, 1 row affected (0.02 sec)
+
+
+08. List the teacher detail who is getting the minimum salary.
+
+mysql> select * from teachers where salary = (select min(salary) from teachers);
++----------+---------+---------+------------+--------+--------+
+| teach_id | name    | dept    | dob        | salary | gender |
++----------+---------+---------+------------+--------+--------+
+|        8 | Kanmani | Science | 2000-11-05 |   4500 | F      |
++----------+---------+---------+------------+--------+--------+
+
+9, List the tracher detail who is getting the second minimum salary
+mysql> SELECT MIN(salary) from teachers where salary >(select min(salary) from teachers);
++-------------+
+| MIN(salary) |
++-------------+
+|        8000 |
++-------------+
+1 row in set (0.00 sec)
+
+
+10.List down the average salary of history teacher
+
+mysql> select name ,avg(salary) from teachers  where dept = "history" group by name;
++---------+-------------+
+| name    | avg(salary) |
++---------+-------------+
+| Preethi |  30000.0000 |
++---------+-------------+
+1 row in set (0.00 sec)
+
+
+
